@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AppCursosCast.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Categorias cadastradas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Criar nova</a>
+</p>
+<table class="table table-dark table-hover" id="myTableCategorias">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.CategoriaId">Editar</a> |
+                <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CategoriaId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#myTableCategorias').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}

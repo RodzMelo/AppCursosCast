@@ -1,0 +1,74 @@
+﻿@model AppCursosCast.Models.Curso
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Deletando o curso "@Html.DisplayFor(model => model.Descricao)"</h1>
+
+<h4>Essa ação é irreversível. Tem certeza?</h4>
+<br />
+<div>
+    <h4>Curso:</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataInicio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataFim)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataFim)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.QuantidadeEstudantes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.QuantidadeEstudantes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.Nome)
+        </dd>
+    </dl>
+
+    <form>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#ModalDelete">
+            Excluir
+        </button>
+        <a asp-action="Index" class="btn btn-secondary">Voltar ao inicio</a>
+    </form>
+</div>
+
+<div class="modal fade" id="ModalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Deletando curso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Se deletar "@Html.DisplayFor(model => model.Descricao)" essa ação será irreversível
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="CursoId" />
+                    <input type="submit" value="Deletar" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

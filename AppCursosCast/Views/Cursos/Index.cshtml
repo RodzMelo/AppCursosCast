@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AppCursosCast.Models.Curso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cursos cadastrados</h1>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Cadastrar novo</a>
+</p>
+<table class="table table-dark table-hover" id="myTableCursos">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataFim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantidadeEstudantes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataFim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantidadeEstudantes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                </td>
+                <td>
+                    
+                    <a asp-action="details" class="btn btn-light" asp-route-id="@item.CursoId">Visualizar</a> |
+                    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.CursoId">Alterar</a> |
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.CursoId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#myTableCursos').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+                }
+            });
+        });
+    </script>
+}

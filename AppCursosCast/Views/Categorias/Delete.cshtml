@@ -1,0 +1,17 @@
+﻿@model AppCursosCast.Models.Categoria
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Deletando a categoria "@Html.DisplayFor(model => model.Nome)"</h1>
+<br />
+<h4>Essa ação é irreversível. Tem certeza?</h4>
+<br />
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CategoriaId" />
+        <input type="submit" value="Deletar" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-secondary">Voltar ao inicio</a>
+    </form>
+</div>
